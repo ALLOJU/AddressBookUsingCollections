@@ -8,7 +8,7 @@ public class Persons {
 		private String city;
 		private String state;
 		private String zip;
-		private int phone_number;
+		private long phone_number;
 		private String email;
 		
 		public String getFirst_name() {
@@ -59,12 +59,12 @@ public class Persons {
 			this.zip = zip;
 		}
 
-		public int getPhone_number() {
+		public long getPhone_number() {
 			return phone_number;
 		}
 
-		public void setPhone_number(int phone_number) {
-			this.phone_number = phone_number;
+		public void setPhone_number(long phone) {
+			this.phone_number = phone;
 		}
 
 		public String getEmail() {
@@ -80,7 +80,7 @@ public class Persons {
 		}
 
 		public Persons(String first_name, String last_name, String address, String city, String state, String zip,
-				int phone_number, String email) {
+				Long phone_number, String email) {
 			super();
 			this.first_name = first_name;
 			this.last_name = last_name;
