@@ -151,14 +151,16 @@ public class AddressBook {
 		}
 	}
 	public void searchPerson(String city,String state) {
-	
+		int count=0;
 		for(int i=0;i<persons.size();i++)
 		{
 			Persons p=(Persons)persons.get(i);
 			if(city.equals(p.getCity()) || state.equals(p.getState())) {
+				count++;
 				System.out.println(p);
 			}
 		}
+		System.out.println("No of contact persons is  :"+count);
 	}
 	
 
