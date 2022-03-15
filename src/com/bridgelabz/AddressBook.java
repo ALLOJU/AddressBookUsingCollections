@@ -120,42 +120,63 @@ public class AddressBook {
 			}
 		}
 	}
+	//Method to delete values from arraylist
+	private void deletePerson(String fname) {
+
+		for(int i=0;i<persons.size();i++) {
+			Persons p=(Persons)persons.get(i);
+			System.out.println("person details are");
+			if(fname.equals(p.getFirst_name()))
+			{
+				persons.remove(i);
+				System.out.println("Record deleted successfully");
+			}
+		}
+
+
+	}
 
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Address Book System ");
 		AddressBook ab=new AddressBook();
-
-		System.out.println("Choose option to perform action");
-		System.out.println("Enter 1 to add person details");
-		System.out.println("Enter 2 to Edit person details");
-		Scanner sc=new Scanner(System.in);
-		int num=sc.nextInt();
-		char choice;
+		int num;
 		do {
+			
+		
+		
+		System.out.println("Please Enter 1 to add person details");
+		System.out.println("Please Enter 2 to edit person details");
+		System.out.println("Please Enter 3 to delete person details");
+		System.out.println("Choose option to perform action");
+		Scanner sc=new Scanner(System.in);
+		 num=sc.nextInt();
+		
 			switch(num) {
 			case 1:
-
+			
 				ab.addPerson();
+				
 				ab.display();
+		
 				break;
+				
 			case 2:
 				
 				ab.editPerson();
 				ab.display();
-				break;	
-
+				break;
+			case 3:
+				System.out.println("Enter Name to Delete ");
+				String fname=sc.next();
+				ab.deletePerson(fname);
+				ab.display();
+				break;
+				
 			}
-			System.out.println("Do You Want To Continue(Y/N)");
-			choice = sc.next().charAt(0);
+			
 
-		}
-		while(choice == 'Y'|| choice == 'y');
-
-		sc.close();
-
+	}while(num!=0);
 	}
-
 
 
 }
