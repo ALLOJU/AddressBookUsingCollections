@@ -64,10 +64,11 @@ public class AddressBook {
 		Persons p=new Persons(first_name,last_name,address,city,state,zip,phone_number,email);
 		boolean isInList=false;
 		for(Persons per : persons){
-			if(per.getFirst_name().equals(p.getFirst_name())&&per.getLast_name().equals(p.getLast_name())){
-				System.out.printf("could not add person");
+			if(per.getFirst_name().equals(p.getFirst_name())){
+				System.out.printf("Person Name already exists... ");
 				isInList=true;
 			}
+			System.out.println();
 		}
 		if(!isInList){
 			this.persons.add(p);
