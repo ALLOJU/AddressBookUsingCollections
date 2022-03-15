@@ -79,8 +79,9 @@ public class Persons {
 			super();
 		}
 
+
 		public Persons(String first_name, String last_name, String address, String city, String state, String zip,
-				Long phone_number, String email) {
+				long phone_number, String email) {
 			super();
 			this.first_name = first_name;
 			this.last_name = last_name;

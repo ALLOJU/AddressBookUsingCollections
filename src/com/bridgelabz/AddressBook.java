@@ -1,70 +1,28 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * @author mounika
+ *
+ */
 public class AddressBook {
-	/**
-	 * PROCEDURE:
-	 * 1.creating array list object
-	 * 2.to add person details into array list
-	 * 3. method to display array list content
-	 */
-	/**
-	 * 1.creating array list object
-	 */
+
+
+	//Creating arraylist object
 	ArrayList<Persons> persons;
+
+	//created constructor
 	public AddressBook() {
 		persons=new ArrayList<Persons>();
 
 	}
-	/**
-	 * 2.to add person details into array list
-	 */
-	Scanner s=new Scanner(System.in);
-
-	public void addPerson() {
-		Persons person = new Persons();
-		System.out.println("Enter the First name:");
-		String fname = s.next();
-		person.setFirst_name(fname);
-
-		System.out.println("Enter the Last name:");
-		String lname = s.next();
-		person.setLast_name(lname);
-
-
-		System.out.println("Enter the Address:");
-		String address = s.next();
-		person.setAddress(address);
-
-		System.out.println("Enter the City:");
-		String city = s.next();
-		person.setCity(city);
-
-		System.out.println("Enter the State:");
-		String state = s.next();
-		person.setState(state);
-
-		System.out.println("Enter the Zip:");
-		String zip = s.next();
-		person.setZip(zip);
 
 
 
-		System.out.println("Enter the Phone :");
-		Long phone = s.nextLong();
-		person.setPhone_number(phone);
 
-		System.out.println("Enter the Email :");
-		String email = s.next();
-		person.setEmail(email);
-		persons.add(person);
-	}
-	/**
-	 *3. method to display array list content
-	 */
+	//to display ArrayList Content
 	public void display() {
 		for (Persons person : persons)
 
@@ -72,57 +30,100 @@ public class AddressBook {
 					+person.getCity()+"\t"+person.getState()+ "\t"+person.getZip()+"\t"+person.getPhone_number()+"\t"+person.getEmail());
 
 	}
+	//method to add person details to array list
+	public void addPerson() {
+		//creating Scanner object to get input from user
+		
+		Scanner sc=new Scanner(System.in);
+		//taking input from user using scanner object
+		System.out.println("Enter First Name");
+		String first_name=sc.next();
+
+
+		System.out.println("Enter Last Name");
+		String last_name=sc.next();
+
+		System.out.println("Enter Address");
+		String address=sc.next();
+
+		System.out.println("Enter City");
+		String city=sc.next();
+
+		System.out.println("Enter State");
+		String state=sc.next();
+
+		System.out.println("Enter Zip code");
+		String zip=sc.next();
+
+		System.out.println("Enter Phone Number");
+		int phone_number=sc.nextInt();
+
+		System.out.println("Enter email");
+		String email=sc.next();
+
+		Persons p=new Persons(first_name,last_name,address,city,state,zip,phone_number,email);
+		boolean isInList=false;
+		for(Persons per : persons){
+			if(per.getFirst_name().equals(p.getFirst_name())&&per.getLast_name().equals(p.getLast_name())){
+				System.out.printf("could not add person");
+				isInList=true;
+			}
+		}
+		if(!isInList){
+			this.persons.add(p);
+			System.out.println("Person details added successfully");
+		}
+	}
+	//Method to edit person details from array list
 	public void editPerson() {
-		System.out.println("Enter your First name:");
-		String fname = s.next();
-		Iterator<Persons> iterator = persons.listIterator();
-		while (iterator.hasNext()) {
-			Persons person = iterator.next();
-			if (fname.equals(person.getFirst_name())) {
+	
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter name of the person to Edit");
+		String editpersonname=sc.next();
+		for(int i=0;i<persons.size();i++) {
+			Persons p=(Persons)persons.get(i);
+			System.out.println("person details are");
+			if(editpersonname.equalsIgnoreCase(p.getFirst_name()))
+			{
+
 
 				System.out.println("Enter Last Name");
-				String last_name=s.next();
-				//p.setFirst_name(first_name);
-				//p.setLast_name(last_name);
-
-
+				String last_name=sc.next();
+			
 				System.out.println("Enter Address");
-				String address=s.next();
-				//p.setAddress(address);
+				String address=sc.next();
 
 				System.out.println("Enter City");
-				String city=s.next();
-				//p.setCity(city);
+				String city=sc.next();
 
 				System.out.println("Enter State");
-				String state=s.next();
-				//p.setState(state);
+				String state=sc.next();
 
 				System.out.println("Enter Zip code");
-				String zip=s.next();
-				//p.setZip(zip);
+				String zip=sc.next();
 
 				System.out.println("Enter Phone Number");
-				long phone_number=s.nextLong();
-				//p.setPhone_number(phone_number);
+				int phone_number=sc.nextInt();
 
 				System.out.println("Enter email");
-				String email=s.next();
+				String email=sc.next();
 
 
-				person.setLast_name(last_name);
-				person.setAddress(address);
-				person.setCity(city);
-				person.setState(state);
-				person.setZip(zip);
-				person.setPhone_number(phone_number);
-				person.setEmail(email);
+				p.setLast_name(last_name);
+				p.setAddress(address);
+				p.setCity(city);
+				p.setState(state);
+				p.setZip(zip);
+				p.setPhone_number(phone_number);
+				p.setEmail(email);
 			}
 		}
 	}
 	//Method to delete values from arraylist
-	private void deletePerson(String fname) {
-
+	public void deletePerson() {
+		Scanner sc1=new  Scanner(System.in);
+		System.out.println("Enter person name to Delete");
+		String fname=sc1.next();
 		for(int i=0;i<persons.size();i++) {
 			Persons p=(Persons)persons.get(i);
 			System.out.println("person details are");
@@ -136,48 +137,5 @@ public class AddressBook {
 
 	}
 
-
-	public static void main(String[] args) {
-		AddressBook ab=new AddressBook();
-		int num;
-		do {
-			
-		
-		
-		System.out.println("Please Enter 1 to add person details");
-		System.out.println("Please Enter 2 to edit person details");
-		System.out.println("Please Enter 3 to delete person details");
-		System.out.println("Choose option to perform action");
-		Scanner sc=new Scanner(System.in);
-		 num=sc.nextInt();
-		
-			switch(num) {
-			case 1:
-			
-				ab.addPerson();
-				
-				ab.display();
-		
-				break;
-				
-			case 2:
-				
-				ab.editPerson();
-				ab.display();
-				break;
-			case 3:
-				System.out.println("Enter Name to Delete ");
-				String fname=sc.next();
-				ab.deletePerson(fname);
-				ab.display();
-				break;
-				
-			}
-			
-
-	}while(num!=0);
-	}
-
-
+	
 }
-
