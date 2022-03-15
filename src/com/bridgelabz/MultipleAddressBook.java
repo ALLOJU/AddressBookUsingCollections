@@ -1,14 +1,15 @@
 package com.bridgelabz;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class MultipleAddressBook {
 	Scanner sc=new Scanner(System.in);	
 	//hashmap used to save address book details
 	HashMap<String,AddressBook> addrMap=new HashMap<>();
-
+	/**
+	 * Method to add Address Book to the array list
+	 */
 	public void addAddressBook()
 	{
 		System.out.println("Enter address book name");
@@ -23,7 +24,9 @@ public class MultipleAddressBook {
 			System.out.println("Address book "+addrbookName+"   Added Successfully");
 		}
 	}
-	//To add person details to Address book
+	/**
+	 * To add person details to the Address book whichever u want to add
+	 */
 	public void addPersonInBook() {
 		System.out.println("Enter name of address book to add person details");
 		String addbookname=sc.next();
@@ -36,8 +39,26 @@ public class MultipleAddressBook {
 			addrMap.get(addbookname).addPerson();
 		}
 	}
-
-	//To edit person details in address book
+	public void searchPersonInBook() {
+		System.out.println("Enter name of address book to search");
+		String addbookname=sc.next();
+		AddressBook ab=addrMap.get(addbookname);
+		if(ab==null) {
+			System.out.println("No address book found");
+		}
+		else {
+			System.out.println("Enter city");
+			String city=sc.next();
+			System.out.println("Enter state");
+			String state=sc.next();
+			addrMap.get(addbookname).searchPerson(city,state);
+		}
+		
+	}
+	
+	/**
+	 * To edit person details in address book
+	 */
 	public void EditPersonInBook() {
 		System.out.println("Enter Name of the Book To Edit");
 		String editbookName=sc.next();
@@ -52,7 +73,9 @@ public class MultipleAddressBook {
 		}
 
 	}
-	//to delete person details in Address Book
+	/**
+	 * to delete person details in Address Book
+	 */
 	public void DeletePersonInBook() {
 		System.out.println("Enter Name of the Book To Delete");
 		String deleteBook=sc.next();
@@ -65,14 +88,18 @@ public class MultipleAddressBook {
 		}
 
 	}
-	//Method to Display address book
+	/**
+	 * Method to Display address book
+	 */
 	public void displayAddressBook() {
 		for(String i:addrMap.keySet())
 		{
 			System.out.println(i);
 		}
 	}
-	//Method to Display Person details in address Book
+	/**
+	 * Method to Display Person details in address Book
+	 */
 	public void displayPersonsInAddressBook() {
 	
 		 for(String i:addrMap.keySet()) { System.out.println(i);
@@ -92,7 +119,7 @@ public static void main(String[] args) {
 		System.out.println("Please Enter 2 to add person details in Address Book");
 		System.out.println("Please Enter 3 to Edit person details in Address Book");
 		System.out.println("Please Enter 4 to Delete person details in Address Book");
-		System.out.println("Please Enter 5 to Display Address Book");
+		System.out.println("Please Enter 5 to Search Person in a City or State");
 
 
 		System.out.println("Choose option to perform action");
@@ -131,11 +158,13 @@ public static void main(String[] args) {
 			
 			multiaddrbook.DeletePersonInBook();
 			multiaddrbook.displayPersonsInAddressBook();
-
 			break;
+		case 5:
+			multiaddrbook.searchPersonInBook();
 
 		}
 
 	}while(num!=0);
 }
+
 }

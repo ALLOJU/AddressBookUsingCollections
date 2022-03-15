@@ -1,28 +1,37 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
  * @author mounika
- *
+ *PROCEDURE:
+ *1.Creating arraylist object
+ *2.created constructor
+ *3.To display ArrayList Content
+ *4.method to add person details to array list
+ *5.Method to edit person details from array list
+ *6.Method to delete values from arraylist
  */
 public class AddressBook {
 
 
-	//Creating arraylist object
+	/**
+	 * 1.Creating arraylist object
+	 */
 	ArrayList<Persons> persons;
 
-	//created constructor
+	/**
+	 * 2.created constructor
+	 */
 	public AddressBook() {
 		persons=new ArrayList<Persons>();
 
 	}
-
-
-
-
-	//to display ArrayList Content
+	/**
+	 * 3.To display ArrayList Content
+	 */
 	public void display() {
 		for (Persons person : persons)
 
@@ -30,10 +39,12 @@ public class AddressBook {
 					+person.getCity()+"\t"+person.getState()+ "\t"+person.getZip()+"\t"+person.getPhone_number()+"\t"+person.getEmail());
 
 	}
-	//method to add person details to array list
+	/**
+	 * 4.method to add person details to array list
+	 */
 	public void addPerson() {
 		//creating Scanner object to get input from user
-		
+
 		Scanner sc=new Scanner(System.in);
 		//taking input from user using scanner object
 		System.out.println("Enter First Name");
@@ -75,9 +86,11 @@ public class AddressBook {
 			System.out.println("Person details added successfully");
 		}
 	}
-	//Method to edit person details from array list
+	/**
+	 * 5.Method to edit person details from array list
+	 */
 	public void editPerson() {
-	
+
 		Scanner sc=new Scanner(System.in);
 		System.out.println("Enter name of the person to Edit");
 		String editpersonname=sc.next();
@@ -90,7 +103,7 @@ public class AddressBook {
 
 				System.out.println("Enter Last Name");
 				String last_name=sc.next();
-			
+
 				System.out.println("Enter Address");
 				String address=sc.next();
 
@@ -120,7 +133,9 @@ public class AddressBook {
 			}
 		}
 	}
-	//Method to delete values from arraylist
+	/**
+	 * 6.Method to delete values from arraylist
+	 */
 	public void deletePerson() {
 		Scanner sc1=new  Scanner(System.in);
 		System.out.println("Enter person name to Delete");
@@ -134,9 +149,18 @@ public class AddressBook {
 				System.out.println("Record deleted successfully");
 			}
 		}
-
-
 	}
-
+	public void searchPerson(String city,String state) {
 	
+		for(int i=0;i<persons.size();i++)
+		{
+			Persons p=(Persons)persons.get(i);
+			if(city.equals(p.getCity()) || state.equals(p.getState())) {
+				System.out.println(p);
+			}
+		}
+	}
+	
+
+
 }
